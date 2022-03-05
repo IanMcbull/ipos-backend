@@ -3,7 +3,9 @@ const dotenv = require('dotenv').config();
 const port = process.env.PORT || 7000;
 const {errorHandler} = require('./middleware/errorMiddleware')
 const app = express();
-
+const colors = require('colors');
+const connectDb = require('./config/db')
+connectDb()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use('/api/products', require('./routes/productRoutes'));
